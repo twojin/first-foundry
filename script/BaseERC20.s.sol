@@ -8,7 +8,8 @@ contract BaseERC20Script is Script {
     BaseERC20 public baseERC20;
 
     function run() external {
-        vm.startBroadcast();
+        uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
+        vm.startBroadcast(deployerPrivateKey);
         baseERC20 = new BaseERC20();
         vm.stopBroadcast();
     }
